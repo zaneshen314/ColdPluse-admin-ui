@@ -1,11 +1,13 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import {Box, Card, CardContent, Modal, Typography, Button} from "@mui/material";
 import {getCharityEventsParticipations} from "../../api/charityEvent";
 import ParticipationRecords from "./ParticipationRecords";
+import {ACTION} from "../../context/participationReducer";
+import {ParticipationContext} from "./index";
 
 const EventCard = ({event}) => {
     const [open, setOpen] = useState(false);
-    const [participationRecords, setParticipationRecords] = useState([]);
+    const {dispatch} = useContext(ParticipationContext);
 
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -14,9 +16,9 @@ const EventCard = ({event}) => {
         try {
             const data = await getCharityEventsParticipations(event.id);
             if (data && Array.isArray(data.userParticipationRecResps)) {
-                setParticipationRecords(data.userParticipationRecResps);
+                dispatch({type: ACTION.LOAD, payload: data});
             } else {
-                setParticipationRecords([]);
+                dispatch({type: ACTION.LOAD, payload: []});
                 console.error('Expected an array but received:', data);
             }
             handleOpen();
@@ -66,7 +68,7 @@ const EventCard = ({event}) => {
                         p: 4,
                         borderRadius: 2 // Rounded corners
                     }}>
-                        <ParticipationRecords eventId={event.id} participationRecords={participationRecords}/>
+                        <ParticipationRecords eventId={event.id}/>
                     </Box>
                 </Modal>
             </CardContent>
