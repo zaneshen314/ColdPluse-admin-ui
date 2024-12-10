@@ -13,7 +13,7 @@ const Login = () => {
   const handleSubmit = val => {
     console.log(val)
     if (!val.username || !val.password) {
-      message.error('账号密码必须输入')
+      message.error('Enter the correct information')
       return
     }
     getMenu(val).then(({ data }) => {
@@ -22,7 +22,7 @@ const Login = () => {
       if (data.code === 20000) {
         localStorage.setItem('token', data.data.token)
         localStorage.setItem('menu', JSON.stringify(data.data.menu))
-        message.success('登录成功')
+        message.success('Login Success')
         navigate('/home')
       } else {
         message.error(data.data.message)
@@ -32,10 +32,12 @@ const Login = () => {
   return (
       <Form name="basic" onFinish={handleSubmit} className="login-container">
         <div className="login_title">Login</div>
-        <Form.Item label=" Email" name="username">
+          <p>Email:</p>
+        <Form.Item label="" name="username">
           <Input placeholder="Entry Email" />
         </Form.Item>
-        <Form.Item label="Password" name="password">
+          <p>Password:</p>
+        <Form.Item label="" name="password">
           <Input.Password placeholder="Entry Password" type="password" />
         </Form.Item>
         <Form.Item className="login-button">

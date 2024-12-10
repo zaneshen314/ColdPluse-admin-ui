@@ -11,6 +11,7 @@ const CommonTag = () => {
   const location = useLocation()
   const dispatch = useDispatch()
   const tabList = useSelector(state => state.tab.tabList)
+
   useEffect(() => {
     let data
     MenuList.forEach(item => {
@@ -31,41 +32,43 @@ const CommonTag = () => {
     console.log(data)
     if (data) {
       dispatch(
-        selectMenuList({
-          label: data.label,
-          name: data.name,
-          path: data.path
-        })
+          selectMenuList({
+            label: data.label,
+            name: data.name,
+            path: data.path
+          })
       )
     }
-  }, [])
+  }, [location.pathname, dispatch])
+
   const handleClose = e => {
     console.log(e, '000')
 
     dispatch(
-      removeMenuListItem({
-        name: e.name,
-        path: e.url,
-        label: e.label
-      })
+        removeMenuListItem({
+          name: e.name,
+          path: e.url,
+          label: e.label
+        })
     )
   }
+
   return (
-    <Space className="commonTag" size={[0, 8]} wrap>
-      {tabList.map(item => {
-        return (
-          <Tag
-            closeIcon={location.pathname !== item.path && item.path !== '/home'}
-            onClick={() => navigate(item.path)}
-            onClose={() => handleClose(item)}
-            color={location.pathname === item.path ? '#3b5999' : ''}
-            key={item.path}
-          >
-            {item.label}
-          </Tag>
-        )
-      })}
-    </Space>
+      <Space className="commonTag" size={[0, 8]} wrap>
+        {tabList.map(item => {
+          return (
+              <Tag
+                  closeIcon={location.pathname !== item.path && item.path !== '/home'}
+                  onClick={() => navigate(item.path)}
+                  onClose={() => handleClose(item)}
+                  color={location.pathname === item.path ? '#3b5999' : ''}
+                  key={item.path}
+              >
+                {item.label}
+              </Tag>
+          )
+        })}
+      </Space>
   )
 }
 
