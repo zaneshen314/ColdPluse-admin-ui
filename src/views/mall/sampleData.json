@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "Collecting plastic bags in beach",
+    "startTime": "2023-11-01 10:00:00",
+    "duration": 120,
+    "point": 10,
+    "concertId": null,
+    "currentEnrolled": 0,
+    "suggestedParticipationSize": 50,
+    "location": "Beach",
+    "description": "A charity event focused on collecting plastic bags from the beach."
+  },
+  {
+    "id": 2,
+    "name": "Charity Run",
+    "startTime": "2024-12-01 08:00:00",
+    "duration": 7200,
+    "point": 10,
+    "concertId": null,
+    "currentEnrolled": 50,
+    "suggestedParticipationSize": 100,
+    "location": "Central Park",
+    "description": "A charity run event to raise funds for local schools."
+  },
+  {
+    "id": 3,
+    "name": "Food Drive",
+    "startTime": "2024-12-05 09:00:00",
+    "duration": 14400,
+    "point": 20,
+    "concertId": null,
+    "currentEnrolled": 30,
+    "suggestedParticipationSize": 50,
+    "location": "Community Center",
+    "description": "A food drive to collect non-perishable items for the food bank."
+  },
+  {
+    "id": 4,
+    "name": "Blood Donation Camp",
+    "startTime": "2024-12-10 10:00:00",
+    "duration": 10800,
+    "point": 15,
+    "concertId": null,
+    "currentEnrolled": 40,
+    "suggestedParticipationSize": 80,
+    "location": "City Hospital",
+    "description": "A blood donation camp to support the local blood bank."
+  },
+  {
+    "id": 5,
+    "name": "Charity Concert",
+    "startTime": "2024-12-15 18:00:00",
+    "duration": 18000,
+    "point": 25,
+    "concertId": null,
+    "currentEnrolled": 200,
+    "suggestedParticipationSize": 300,
+    "location": "Downtown Arena",
+    "description": "A charity concert featuring local bands to raise funds for healthcare."
+  },
+  {
+    "id": 6,
+    "name": "Tree Plantation Drive",
+    "startTime": "2024-12-20 07:00:00",
+    "duration": 3600,
+    "point": 5,
+    "concertId": null,
+    "currentEnrolled": 100,
+    "suggestedParticipationSize": 150,
+    "location": "City Park",
+    "description": "A tree plantation drive to promote environmental awareness."
+  }
+]
