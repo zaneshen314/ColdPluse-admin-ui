@@ -22,7 +22,7 @@ export const participationReducer = (state, action) => {
             return {
                 charityEvent: state.charityEvent, userParticipationRecResps: state.userParticipationRecResps.map(rec =>
                     rec.user.id === action.payload.userId
-                        ? {...rec, charityEventParticipation: {...rec.charityEventParticipation, status: 'ENROLLED'}}
+                        ? {...rec, charityEventParticipation: {...rec.charityEventParticipation, status: 'REJECTED'}}
                         : rec
                 )
             };
@@ -31,7 +31,7 @@ export const participationReducer = (state, action) => {
             return {
                 charityEvent: state.charityEvent, userParticipationRecResps: state.userParticipationRecResps.map(rec =>
                     rec.user.id === action.payload.userId
-                        ? {...rec, charityEventParticipation: {...rec.charityEventParticipation, status: 'ENROLLED'}}
+                        ? {...rec, charityEventParticipation: {...rec.charityEventParticipation, status: 'COMPLETED'}}
                         : rec
                 )
             };
@@ -40,7 +40,7 @@ export const participationReducer = (state, action) => {
             return {
                 charityEvent: state.charityEvent, userParticipationRecResps: state.userParticipationRecResps.map(rec =>
                     rec.user.id === action.payload.userId
-                        ? {...rec, charityEventParticipation: {...rec.charityEventParticipation, status: 'ENROLLED'}}
+                        ? {...rec, charityEventParticipation: {...rec.charityEventParticipation, status: 'ABSENT'}}
                         : rec
                 )
             };
