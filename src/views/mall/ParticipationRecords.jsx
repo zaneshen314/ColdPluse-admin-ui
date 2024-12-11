@@ -58,7 +58,7 @@ const ParticipationRecords = ({ eventId }) => {
                                             <Button variant="contained" color="primary" style={{ marginRight: '10px' }} onClick={() => handleApprove(rec.user.id)}>Approve</Button>
                                             <Button variant="contained" color="secondary" onClick={() => handleReject(rec.user.id)}>Reject</Button>
                                         </>
-                                    ) : rec.charityEventParticipation.status !== 'COMPLETED' && rec.charityEventParticipation.status !== 'ABSENT' ? (
+                                    ) : rec.charityEventParticipation.status !== 'COMPLETED' && rec.charityEventParticipation.status !== 'ABSENT' && rec.charityEventParticipation.status !== 'REJECTED' ? (
                                         <>
                                             <Button variant="contained" color="primary" style={{ marginRight: '10px' }} onClick={() => handleComplete(rec.user.id)}>Complete</Button>
                                             <Button variant="contained" color="secondary" onClick={() => handleMarkAbsent(rec.user.id)}>Mark Absent</Button>
