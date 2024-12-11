@@ -7,28 +7,29 @@ import {
     markAbsentParticipation,
     rejectParticipation
 } from "../../api/charityEvent";
+import {ACTION} from "../../context/participationReducer";
 
 const ParticipationRecords = ({ eventId }) => {
     const { state, dispatch } = useContext(ParticipationContext);
 
     const handleApprove = (userId) => {
         approveParticipation(eventId, userId);
-        dispatch({ type: 'APPROVE', payload: { userId } });
+        dispatch({ type: ACTION.APPROVE, payload: { userId } });
     };
 
     const handleReject = (userId) => {
         rejectParticipation(eventId, userId);
-        dispatch({ type: 'REJECT', payload: { userId } });
+        dispatch({ type: ACTION.REJECT, payload: { userId } });
     };
 
     const handleComplete = (userId) => {
         completeParticipation(eventId, userId);
-        dispatch({ type: 'COMPLETE', payload: { userId } });
+        dispatch({ type: ACTION.COMPLETE, payload: { userId } });
     };
 
     const handleMarkAbsent = (userId) => {
         markAbsentParticipation(eventId, userId);
-        dispatch({ type: 'MARK_ABSENT', payload: { userId } });
+        dispatch({ type: ACTION.MARK_ABSENT, payload: { userId } });
     };
 
     return (
