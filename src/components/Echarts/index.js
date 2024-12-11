@@ -63,7 +63,7 @@ const Echarts = ({ style, chartData, isAxisChart = true }) => {
       options = normalOption
     }
     echartObj.current.setOption(options)
-  }, [chartData])
+  }, [chartData, isAxisChart])
   return <div id="main" ref={echartsRef} style={style}></div>
 }
 
