@@ -3,6 +3,7 @@ import { Form, Input, Button, message } from 'antd'
 import { getMenu } from '../../api/MenuApi'
 import { useNavigate, Navigate } from 'react-router-dom'
 import './login.css'
+import {login} from "../../api/login";
 const Login = () => {
   const navigate = useNavigate()
 
@@ -10,24 +11,30 @@ const Login = () => {
     return <Navigate to="/home" replace />
   }
 
-  const handleSubmit = val => {
-    console.log(val)
-    if (!val.username || !val.password) {
-      message.error('Enter the correct information')
-      return
-    }
-    getMenu(val).then(({ data }) => {
-      console.log(data)
-
-      if (data.code === 20000) {
-        localStorage.setItem('token', data.data.token)
-        localStorage.setItem('menu', JSON.stringify(data.data.menu))
-        message.success('Login Success')
-        navigate('/home')
-      } else {
-        message.error(data.data.message)
+  const handleSubmit = async val => {
+      console.log(val)
+      if (!val.username || !val.password) {
+          message.error('Enter the correct information')
+          return
       }
-    })
+      try {
+          const data = await login(val.username, val.password);
+          localStorage.setItem('token', data.data);
+          // 模拟动态获得菜单
+          getMenu(val).then(({data}) => {
+              console.log(data)
+              if (data.code === 20000) {
+                  localStorage.setItem('menu', JSON.stringify(data.data.menu))
+                  message.success('Login Success')
+                  navigate('/home')
+              } else {
+                  message.error(data.data.message)
+              }
+          })
+      } catch (error) {
+          alert("Login failed");
+      }
+
   }
   return (
       <Form name="basic" onFinish={handleSubmit} className="login-container">
