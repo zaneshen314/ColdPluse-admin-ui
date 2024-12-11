@@ -1,11 +1,12 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import Main from '../views/main';
 import Home from '../views/home/index';
-import Mall from '../views/mall/index';
+import Mall from '../views/mall';
 import User from '../views/user/index';
 import PageOne from '../views/other/pageOne';
 import PageTwo from '../views/other/pageTwo';
 import Login from '../views/login';
+import Schedule from "../views/schedule";
 
 const routers = [
     {
@@ -24,6 +25,10 @@ const routers = [
             {
                 path: '/mall',
                 Component: Mall
+            },
+            {
+                path: '/user',
+                Component: Schedule
             },
             {
                 path: '/user',

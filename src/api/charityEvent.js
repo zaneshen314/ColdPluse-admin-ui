@@ -45,3 +45,4 @@ export const completeParticipation = async (eventId, userId) => {
     });
     return response.data;
 }
+
