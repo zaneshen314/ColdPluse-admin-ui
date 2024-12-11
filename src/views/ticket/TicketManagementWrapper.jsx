@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, {useEffect, useState} from 'react';
 import ConcertControlPanel from './ConcertControlPanel';
 import TicketList from './TicketList';
 import TicketStrategyControlPanel from "./TicketStrategyControlPanel";
-import { Box } from "@mui/material";
-import { getAllConcertTickets } from '../../api/tickets';
+import {Box} from "@mui/material";
+import {getAllConcertTickets} from '../../api/tickets';
 
 const TicketManagementWrapper = () => {
     const [selectedConcert, setSelectedConcert] = useState(null);
@@ -22,13 +22,19 @@ const TicketManagementWrapper = () => {
         fetchTickets();
     }, []);
 
+    const shouldShowStrategyPanel = selectedConcert && !selectedConcert.concertSchedule.concertClasses.every(ticket => ticket.capacity === ticket.availableSeats);
+
     return (
         <div>
-            <Box sx={{ boxShadow: '3px 3px 10px rgba(0, 0, 0, 0.2), -3px -3px 10px rgba(0, 0, 0, 0.2)', padding: 2, borderRadius: 1 }}>
-                <ConcertControlPanel concerts={tickets} setSelectedConcert={setSelectedConcert} />
-                {selectedConcert && <TicketList concert={selectedConcert} />}
+            <Box sx={{
+                boxShadow: '3px 3px 10px rgba(0, 0, 0, 0.2), -3px -3px 10px rgba(0, 0, 0, 0.2)',
+                padding: 2,
+                borderRadius: 1
+            }}>
+                <ConcertControlPanel concerts={tickets} setSelectedConcert={setSelectedConcert}/>
+                {selectedConcert && <TicketList concert={selectedConcert}/>}
             </Box>
-            {selectedConcert && <TicketStrategyControlPanel selectedConcert={selectedConcert}/>}
+            {shouldShowStrategyPanel && <TicketStrategyControlPanel selectedConcert={selectedConcert}/>}
         </div>
     );
 };

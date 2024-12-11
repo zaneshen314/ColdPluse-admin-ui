@@ -14,3 +14,8 @@ export const updatePrice = async (concertId, concertScheduleId, classId, price) 
     const response = await instance.put(`/concerts/${concertId}/schedules/${concertScheduleId}/classes/${classId}`, price);
     return response.data;
 }
+
+export const releaseAll = async (concertId, concertScheduleId) => {
+    const response = await instance.post(`/release-tickets/${concertId}/${concertScheduleId}/releaseNow`);
+    return response.data;
+}

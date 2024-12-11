@@ -8,6 +8,7 @@ const TicketStrategyControlPanel = ({ selectedConcert }) => {
     const [executeHour, setExecuteHour] = useState('');
     const [repeatTimes, setRepeatTimes] = useState('');
     const [openSnackbar, setOpenSnackbar] = useState(false);
+    const [alertMessage, setAlertMessage] = useState('');
 
     useEffect(() => {
         if (selectedConcert && selectedConcert.ticketRelease) {
@@ -41,6 +42,13 @@ const TicketStrategyControlPanel = ({ selectedConcert }) => {
     };
 
     const handleSubmit = async () => {
+        const timeFormat = /^\d{4}-\d{2}-\d{2}$/;
+        if (!timeFormat.test(start) || !timeFormat.test(end)) {
+            setAlertMessage('Start Time and End Time must be in YYYY-MM-DD format');
+            setOpenSnackbar(true);
+            return;
+        }
+
         const ticketRelease = {
             startTime: start,
             endTime: end,
@@ -50,9 +58,12 @@ const TicketStrategyControlPanel = ({ selectedConcert }) => {
 
         try {
             await setTicketStrategy(selectedConcert.concertId, selectedConcert.concertSchedule.scheduleId, ticketRelease);
+            setAlertMessage('Ticket strategy updated successfully!');
             setOpenSnackbar(true);
         } catch (error) {
             console.error('Error updating ticket strategy:', error);
+            setAlertMessage('Failed to update ticket strategy');
+            setOpenSnackbar(true);
         }
     };
 
@@ -73,6 +84,7 @@ const TicketStrategyControlPanel = ({ selectedConcert }) => {
                         fullWidth
                         value={start}
                         onChange={handleStartTimeChange}
+                        placeholder="YYYY-MM-DD"
                         InputLabelProps={{ shrink: true }}
                     />
                 </Grid>
@@ -83,6 +95,7 @@ const TicketStrategyControlPanel = ({ selectedConcert }) => {
                         fullWidth
                         value={end}
                         onChange={handleEndTimeChange}
+                        placeholder="YYYY-MM-DD"
                         InputLabelProps={{ shrink: true }}
                     />
                 </Grid>
@@ -115,8 +128,8 @@ const TicketStrategyControlPanel = ({ selectedConcert }) => {
                 onClose={handleCloseSnackbar}
                 anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
             >
-                <Alert onClose={handleCloseSnackbar} severity="success" sx={{ width: '100%' }}>
-                    Ticket strategy updated successfully!
+                <Alert onClose={handleCloseSnackbar} severity={alertMessage.includes('successfully') ? 'success' : 'warning'} sx={{ width: '100%' }}>
+                    {alertMessage}
                 </Alert>
             </Snackbar>
         </div>
