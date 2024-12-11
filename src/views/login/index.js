@@ -19,7 +19,7 @@ const Login = () => {
       }
       try {
           const data = await login(val.username, val.password);
-          localStorage.setItem('token', data.data);
+          localStorage.setItem('token', data);
           // 模拟动态获得菜单
           getMenu(val).then(({data}) => {
               console.log(data)
