@@ -1,4 +1,4 @@
-import React, {useEffect, useReducer, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
     Button,
     FormControl,
@@ -18,10 +18,8 @@ import {
     TextField
 } from '@mui/material';
 import {createSession, getAllConcertSchedules} from '../../api/concerts';
-import participationReducer from '../../context/participationReducer';
 
 const Schedule = () => {
-    const [state, dispatch] = useReducer(participationReducer, []);
     const [schedules, setSchedules] = useState([]);
     const [selectedConcert, setSelectedConcert] = useState('');
     const [concerts, setConcerts] = useState([]);
@@ -69,7 +67,7 @@ const Schedule = () => {
                 duration: durationInSeconds
             };
 
-            const data = await createSession(requestBody);
+            await createSession(requestBody);
 
             const existingRecord = schedules.findLast(schedule => schedule.concertId === selectedConcert);
 
