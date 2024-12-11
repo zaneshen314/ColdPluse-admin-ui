@@ -29,23 +29,11 @@ const permission = {
                         url: 'User/index'
                     },
                     {
-                        label: 'Other',
-                        icon: 'location',
-                        children: [{
-                            path: '/page1',
-                            name: 'page1',
-                            label: 'page1',
-                            icon: 'setting',
-                            url: 'other/pageOne.vue'
-                        },
-                            {
-                                path: '/page2',
-                                name: 'page2',
-                                label: 'page2',
-                                icon: 'setting',
-                                url: 'other/pageTwo.vue'
-                            }
-                        ]
+                        path: '/ticket',
+                        name: 'ticket',
+                        label: 'TicketSetting',
+                        icon: 'user',
+                        url: 'User/index'
                     }
                 ],
                 token: Mock.Random.guid(),

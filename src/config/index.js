@@ -21,23 +21,11 @@ const menuList=[
     url: '/user/index'
   },
   {
-    path: '/other',
-    label: 'Other',
+    path: '/ticket',
+    name: 'ticket',
+    label: 'TicketSetting',
     icon: 'SettingOutlined',
-    children: [
-      {
-        path: '/other/pageOne',
-        name: 'page1',
-        label: 'page1',
-        icon: 'SettingOutlined'
-      },
-      {
-        path: '/other/pageTwo',
-        name: 'page2',
-        label: 'page2',
-        icon: 'SettingOutlined'
-      }
-    ]
-  }
+    url: '/user/index'
+  },
 ]
 export default menuList
