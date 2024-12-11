@@ -125,6 +125,7 @@ const Schedule = () => {
                                     <TableCell>Start Time</TableCell>
                                     <TableCell>Venue</TableCell>
                                     <TableCell>Duration</TableCell>
+                                    <TableCell>Sale Start Time</TableCell>
                                 </TableRow>
                             </TableHead>
                             <TableBody>
@@ -138,6 +139,7 @@ const Schedule = () => {
                                         <TableCell>{schedule.start_time}</TableCell>
                                         <TableCell>{schedule.venue}</TableCell>
                                         <TableCell>{schedule.duration}</TableCell>
+                                        <TableCell>{schedule.saleStartTime}</TableCell>
                                     </TableRow>
                                 )) : null}
                             </TableBody>
