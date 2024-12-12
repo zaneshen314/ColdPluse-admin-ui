@@ -28,6 +28,7 @@ const Schedule = () => {
     const [startTime, setStartTime] = useState('');
     const [duration, setDuration] = useState('');
     const [loading, setLoading] = useState(true);
+    const [saleStartTime, setSaleStartTime] = useState('');
 
     useEffect(() => {
         const fetchSchedules = async () => {
@@ -72,10 +73,18 @@ const Schedule = () => {
     const handleSubmit = async () => {
         try {
             const durationInSeconds = parseInt(duration) * 60;
+
+            // Check if saleStartTime is smaller than startTime
+            if (new Date(saleStartTime) < new Date(startTime)) {
+                alert("Sale start time cannot be earlier than the start time.");
+                return;
+            }
+
             const requestBody = {
                 concertId: selectedConcert,
                 startTime: startTime,
-                duration: durationInSeconds
+                duration: durationInSeconds,
+                saleStartTime: saleStartTime
             };
 
             await createSession(requestBody);
@@ -91,6 +100,7 @@ const Schedule = () => {
                 start_time: startTime,
                 venue: existingRecord.venue,
                 duration: durationInSeconds,
+                saleStartTime: saleStartTime,
                 imgUrl: existingRecord.imgUrl
             };
 
@@ -181,6 +191,15 @@ const Schedule = () => {
                                 value={duration}
                                 onChange={(e) => setDuration(e.target.value)}
                                 sx={{ marginBottom: "10px" }}
+                            />
+                            <TextField
+                                label="Sale Start Time"
+                                type="datetime-local"
+                                fullWidth
+                                value={saleStartTime}
+                                onChange={(e) => setSaleStartTime(e.target.value)}
+                                sx={{ marginBottom: "10px" }}
+                                InputLabelProps={{ shrink: true }}
                             />
                             <Button variant="contained" onClick={handleSubmit}>Submit</Button>
                         </Box>
