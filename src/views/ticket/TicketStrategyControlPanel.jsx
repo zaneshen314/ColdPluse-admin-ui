@@ -60,6 +60,7 @@ const TicketStrategyControlPanel = ({ selectedConcert }) => {
         };
 
         try {
+            setIsDisabled(true);
             await setTicketStrategy(selectedConcert.concertId, selectedConcert.concertSchedule.scheduleId, ticketRelease);
             setAlertMessage('Ticket strategy updated successfully!');
             setOpenSnackbar(true);

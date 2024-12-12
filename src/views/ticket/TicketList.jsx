@@ -45,6 +45,9 @@ const TicketList = ({ concert }) => {
             await releaseAll(concert.concertId, concert.concertSchedule.scheduleId);
             setAlertMessage('All tickets released successfully!');
             setOpenSnackbar(true);
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
         } catch (error) {
             console.error('Error releasing all tickets:', error);
             setAlertMessage('Failed to release all tickets');
