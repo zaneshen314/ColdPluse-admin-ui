@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import {
     Button,
     FormControl,
-    InputLabel,
     MenuItem,
     Paper,
     Select,
@@ -114,7 +113,6 @@ const Schedule = () => {
                 <>
                     <Typography sx={{ marginBottom: "5px" }}>Concerts</Typography>
                     <FormControl fullWidth>
-                        <InputLabel id="concert-select-label">Select Concert</InputLabel>
                         <Select
                             labelId="concert-select-label"
                             value={selectedConcert}
