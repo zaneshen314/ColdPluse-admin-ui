@@ -91,7 +91,7 @@ const Home = () => {
             <div className="user">
               <img alt="logo" src={userImg}></img>
               <div className="userinfo">
-                <p className="name">Zane</p>
+                <p className="name">Jason</p>
                 <p className="access">Super Admin</p>
               </div>
             </div>
