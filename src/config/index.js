@@ -14,6 +14,13 @@ const menuList=[
     url: '/mall/index'
   },
   {
+    path: '/user',
+    name: 'user',
+    label: 'Schedule',
+    icon: 'SettingOutlined',
+    url: '/user/index'
+  },
+  {
     path: '/ticket',
     name: 'ticket',
     label: 'TicketSetting',
