@@ -9,6 +9,7 @@ const TicketStrategyControlPanel = ({ selectedConcert }) => {
     const [repeatTimes, setRepeatTimes] = useState('');
     const [openSnackbar, setOpenSnackbar] = useState(false);
     const [alertMessage, setAlertMessage] = useState('');
+    const [isDisabled, setIsDisabled] = useState(false);
 
     useEffect(() => {
         if (selectedConcert && selectedConcert.ticketRelease) {
@@ -17,11 +18,13 @@ const TicketStrategyControlPanel = ({ selectedConcert }) => {
             setEnd(endTime);
             setExecuteHour(hour);
             setRepeatTimes(repeatCount);
+            setIsDisabled(true);
         } else {
             setStart('');
             setEnd('');
             setExecuteHour('');
             setRepeatTimes('');
+            setIsDisabled(false);
         }
     }, [selectedConcert]);
 
@@ -86,6 +89,7 @@ const TicketStrategyControlPanel = ({ selectedConcert }) => {
                         onChange={handleStartTimeChange}
                         placeholder="YYYY-MM-DD"
                         InputLabelProps={{ shrink: true }}
+                        disabled={isDisabled}
                     />
                 </Grid>
                 <Grid item xs={3}>
@@ -97,6 +101,7 @@ const TicketStrategyControlPanel = ({ selectedConcert }) => {
                         onChange={handleEndTimeChange}
                         placeholder="YYYY-MM-DD"
                         InputLabelProps={{ shrink: true }}
+                        disabled={isDisabled}
                     />
                 </Grid>
                 <Grid item xs={2}>
@@ -107,6 +112,7 @@ const TicketStrategyControlPanel = ({ selectedConcert }) => {
                         value={executeHour}
                         onChange={handleExecuteHourChange}
                         inputProps={{ min: 0, max: 23 }}
+                        disabled={isDisabled}
                     />
                 </Grid>
                 <Grid item xs={2}>
@@ -116,10 +122,11 @@ const TicketStrategyControlPanel = ({ selectedConcert }) => {
                         fullWidth
                         value={repeatTimes}
                         onChange={handleRepeatTimesChange}
+                        disabled={isDisabled}
                     />
                 </Grid>
                 <Grid item xs={2}>
-                    <Button variant="contained" color="primary" onClick={handleSubmit}>Submit</Button>
+                    <Button variant="contained" color="primary" onClick={handleSubmit} disabled={isDisabled}>Submit</Button>
                 </Grid>
             </Grid>
             <Snackbar
