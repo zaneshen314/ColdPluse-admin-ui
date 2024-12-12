@@ -96,7 +96,6 @@ const Schedule = () => {
         <div>
             <Typography sx={{marginBottom: "5px"}}>Concerts</Typography>
             <FormControl fullWidth>
-                <InputLabel id="concert-select-label">Select Concert</InputLabel>
                 <Select
                     labelId="concert-select-label"
                     value={selectedConcert}
@@ -143,11 +142,22 @@ const Schedule = () => {
                             </TableBody>
                         </Table>
                     </TableContainer>
-                    <Button variant="contained" sx={{marginTop: "10px"}} onClick={handleCreateSession}>Create New Session</Button>
+                    <Button variant="contained" sx={{marginTop: "10px"}} onClick={handleCreateSession}>Create New
+                        Session</Button>
                 </div>
             )}
             <Modal open={open} onClose={() => setOpen(false)}>
-                <Box sx={{position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 400, bgcolor: 'background.paper', border: '2px solid #000', boxShadow: 24, p: 4}}>
+                <Box sx={{
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    width: 400,
+                    bgcolor: 'background.paper',
+                    border: '2px solid #000',
+                    boxShadow: 24,
+                    p: 4
+                }}>
                     <Typography variant="h6" component="h2">Create New Session</Typography>
                     <TextField
                         label="Start Time"
@@ -156,7 +166,7 @@ const Schedule = () => {
                         value={startTime}
                         onChange={(e) => setStartTime(e.target.value)}
                         sx={{marginBottom: "10px"}}
-                        InputLabelProps={{ shrink: true }}
+                        InputLabelProps={{shrink: true}}
                     />
                     <TextField
                         label="Duration (minutes)"
