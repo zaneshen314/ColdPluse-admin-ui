@@ -26,7 +26,7 @@ const TicketManagementWrapper = () => {
         fetchTickets();
     }, []);
 
-    const shouldShowStrategyPanel = selectedConcert && !selectedConcert.concertSchedule.concertClasses.every(ticket => ticket.capacity === ticket.availableSeats);
+    const shouldShowStrategyPanel = selectedConcert && (!selectedConcert.ticketRelease || selectedConcert.ticketRelease && selectedConcert.ticketRelease.repeatCount!==-1);
 
     return (
         <div>
