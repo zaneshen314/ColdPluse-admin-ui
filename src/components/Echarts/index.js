@@ -20,7 +20,8 @@ const axisOption = {
     },
     axisLabel: {
       interval: 0,
-      color: '#333'
+      color: '#333',
+      fontSize: 8 // Set the font size to a smaller value
     }
   },
   yAxis: [
