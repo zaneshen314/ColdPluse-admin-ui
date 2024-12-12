@@ -1,0 +1,72 @@
+{
+  "charityEvent": {
+    "id": 1,
+    "name": "Collecting plastic bags in beach",
+    "startTime": "2023-11-01 10:00:00",
+    "duration": 120,
+    "point": 10,
+    "concertId": null,
+    "currentEnrolled": 0,
+    "suggestedParticipationSize": 50,
+    "location": "Beach",
+    "description": "A charity event focused on collecting plastic bags from the beach."
+  },
+  "userParticipationRecResps": [
+    {
+      "user": {
+        "id": 1,
+        "name": "Alice Johnson",
+        "email": "alice.johnson@example.com",
+        "cumulatedPoint": 100
+      },
+      "charityEventParticipation": {
+        "userId": 1,
+        "charityEventId": 1,
+        "claimPoint": false,
+        "status": "REGISTERED"
+      }
+    },
+    {
+      "user": {
+        "id": 2,
+        "name": "Bob Smith",
+        "email": "bob.smith@example.com",
+        "cumulatedPoint": 50
+      },
+      "charityEventParticipation": {
+        "userId": 2,
+        "charityEventId": 1,
+        "claimPoint": false,
+        "status": "REGISTERED"
+      }
+    },
+    {
+      "user": {
+        "id": 3,
+        "name": "Charlie Brown",
+        "email": "charlie.brown@example.com",
+        "cumulatedPoint": 200
+      },
+      "charityEventParticipation": {
+        "userId": 3,
+        "charityEventId": 1,
+        "claimPoint": false,
+        "status": "REGISTERED"
+      }
+    },
+    {
+      "user": {
+        "id": 4,
+        "name": "Diana Prince",
+        "email": "diana.prince@example.com",
+        "cumulatedPoint": 150
+      },
+      "charityEventParticipation": {
+        "userId": 4,
+        "charityEventId": 1,
+        "claimPoint": false,
+        "status": "REGISTERED"
+      }
+    }
+  ]
+}

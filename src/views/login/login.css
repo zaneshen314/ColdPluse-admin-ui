@@ -1,0 +1,62 @@
+/* 整体容器样式 */
+.login-container {
+  width: 350px;
+  margin: 180px auto;
+  padding: 35px 35px 20px 35px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+/* 标题样式 */
+.login-container .login_title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 600;
+  color: #4fa1d9;
+  margin-bottom: 30px;
+}
+
+/* 输入框样式 */
+.login-container .el-input {
+  width: 100%;  /* 设置输入框宽度为容器的100% */
+  height: 40px;
+  font-size: 14px;
+  padding: 0 12px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+/* 输入框聚焦时的样式 */
+.login-container .el-input:focus {
+  border-color: #4fa1d9;
+  box-shadow: 0 0 0 2px rgba(79, 161, 217, 0.2);
+}
+
+/* 登录按钮样式 */
+.login-container .login-button .el-button {
+  width: 100%;  /* 设置按钮宽度为容器的100% */
+  padding: 12px;
+  font-size: 16px;
+  background-color: #4fa1d9;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* 登录按钮 hover 样式 */
+.login-container .login-button .el-button:hover {
+  background-color: #3579b1;
+}
+
+/* 错误消息提示样式 */
+.el-form-item__error {
+  color: #ff4d4f;
+  font-size: 12px;
+  margin-top: 5px;
+  text-align: center;
+}
