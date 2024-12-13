@@ -13,7 +13,7 @@ const CommonHeader = ({ collapsed }) => {
     const dispatch = useDispatch()
 
     const logout = () => {
-        localStorage.removeItem('token')
+        localStorage.removeItem('adminToken')
         navigate('/login', { replace: true })
     }
 
