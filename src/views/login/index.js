@@ -7,7 +7,7 @@ import {login} from "../../api/login";
 const Login = () => {
   const navigate = useNavigate()
 
-  if (localStorage.getItem('token')) {
+  if (localStorage.getItem('adminToken')) {
     return <Navigate to="/home" replace />
   }
 
