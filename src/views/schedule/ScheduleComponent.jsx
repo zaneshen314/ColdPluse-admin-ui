@@ -18,6 +18,7 @@ import {
     CircularProgress
 } from '@mui/material';
 import { createSession, getAllConcertSchedules } from '../../api/concerts';
+import dayjs from 'dayjs';
 
 const Schedule = () => {
     const [schedules, setSchedules] = useState([]);
@@ -70,13 +71,17 @@ const Schedule = () => {
         setOpen(true);
     };
 
+    const formatDateTime = (dateTime) => {
+        return dayjs(dateTime).format('YYYY-MM-DD HH:mm:ss');
+    };
+
     const handleSubmit = async () => {
         try {
             const durationInSeconds = parseInt(duration) * 60;
 
             // Check if saleStartTime is smaller than startTime
-            if (new Date(saleStartTime) < new Date(startTime)) {
-                alert("Sale start time cannot be earlier than the start time.");
+            if (new Date(saleStartTime) > new Date(startTime)) {
+                alert("Sale start time cannot be later than concert start time.");
                 return;
             }
 
@@ -148,7 +153,7 @@ const Schedule = () => {
                                             <TableCell>Min Price</TableCell>
                                             <TableCell>Start Time</TableCell>
                                             <TableCell>Venue</TableCell>
-                                            <TableCell>Duration</TableCell>
+                                            <TableCell>Duration (minutes)</TableCell>
                                             <TableCell>Sale Start Time</TableCell>
                                         </TableRow>
                                     </TableHead>
@@ -176,11 +181,11 @@ const Schedule = () => {
                         <Box sx={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 400, bgcolor: 'background.paper', border: '2px solid #000', boxShadow: 24, p: 4 }}>
                             <Typography variant="h6" component="h2">Create New Session</Typography>
                             <TextField
-                                label="Start Time"
+                                label="Concert Start Time"
                                 type="datetime-local"
                                 fullWidth
                                 value={startTime}
-                                onChange={(e) => setStartTime(e.target.value)}
+                                onChange={(e) => setStartTime(formatDateTime(e.target.value))}
                                 sx={{ marginBottom: "10px" }}
                                 InputLabelProps={{ shrink: true }}
                             />
@@ -197,7 +202,7 @@ const Schedule = () => {
                                 type="datetime-local"
                                 fullWidth
                                 value={saleStartTime}
-                                onChange={(e) => setSaleStartTime(e.target.value)}
+                                onChange={(e) => setSaleStartTime(formatDateTime(e.target.value))}
                                 sx={{ marginBottom: "10px" }}
                                 InputLabelProps={{ shrink: true }}
                             />
